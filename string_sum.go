@@ -37,7 +37,7 @@ func StringSum(input string) (output string, err error) {
 	hasOnlyCorrectCharacters, _ := regexp.MatchString("^[0-9\\+\\-]+$", input)
 
 	if hasOnlyCorrectCharacters != true {
-		return "", fmt.Errorf("got error: %w", strconv.ErrSyntax)
+		return "", fmt.Errorf("got error: %w", strconv.ErrSyntax.(*strconv.NumError))
 	}
 	operandsRegexp := regexp.MustCompile("-?[0-9]+")
 	operands := operandsRegexp.FindAllString(input, 3)
